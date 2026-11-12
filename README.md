@@ -1,123 +1,384 @@
-# Tyre-Dynamics-and-Thermal-Modelling
+<div align="center">
+
+# 🏁 Tyre Dynamics & Thermal Modelling
+
+### A MATLAB & Python Simulation Study of Tyre Force Generation, Thermal Response and Performance Degradation
 
 ![Project Status](https://img.shields.io/badge/Status-In%20Progress-orange)
+![MATLAB](https://img.shields.io/badge/MATLAB-Modelling-blue)
+![Python](https://img.shields.io/badge/Python-Analysis-yellow)
+![Vehicle Dynamics](https://img.shields.io/badge/Focus-Vehicle%20Dynamics-red)
+![Simulation](https://img.shields.io/badge/Approach-Simulation--Based-green)
 
-## Modelling Framework and Development Methodology
+**Understanding, modelling and simulating tyre behaviour under different operating conditions.**
 
-The project will be developed in progressive stages, starting with the fundamental principles of tyre dynamics and advancing towards an integrated tyre force, thermal and degradation simulation framework.
+</div>
 
-Each stage will include theoretical investigation, mathematical formulation, model implementation, simulation, result analysis and verification wherever suitable reference data are available.
+---
 
-### 1. Tyre Dynamics Theory
-**Understand slip, forces and tyre-road interaction.**
+## 📌 Project Overview
 
-The first stage focuses on understanding the physical principles behind tyre force generation during acceleration, braking and cornering.
+This project focuses on the mathematical modelling, simulation and analysis of automotive tyre dynamics and thermal behaviour using MATLAB and Python.
 
-**Planned approach:**
-- Study the fundamentals of tyre-road interaction and friction.
-- Understand longitudinal slip ratio and lateral slip angle.
-- Investigate the relationship between vertical load and tyre force generation.
-- Study the behaviour of longitudinal force (Fx), lateral force (Fy) and normal force (Fz).
-- Develop simplified mathematical equations to describe longitudinal and lateral tyre forces.
-- Implement the initial models in MATLAB and Python.
-- Simulate tyre behaviour under different slip and normal-load conditions.
-- Analyse force characteristics and identify the limitations of simplified models.
+The main objective is to develop a modular simulation framework to investigate tyre force characteristics, slip behaviour, temperature development, warm-up characteristics and performance degradation.
 
-**Expected outcome:** A basic tyre dynamics model capable of illustrating longitudinal and lateral force characteristics as functions of tyre operating conditions.
+The project follows a progressive engineering approach, beginning with fundamental tyre dynamics and advancing towards an integrated tyre force, thermal and degradation model.
 
-### 2. Pacejka Magic Formula Modelling
-**Mathematically represent nonlinear tyre force characteristics.**
+### 🎯 Main Modelling Areas
 
-The second stage introduces the Pacejka Magic Formula to represent the nonlinear relationship between tyre slip and generated forces.
+| 🛞 Tyre Dynamics | 🌡️ Thermal Modelling | 📉 Degradation |
+|:---:|:---:|:---:|
+| Longitudinal and lateral forces | Heat generation and dissipation | Wear behaviour |
+| Slip ratio and slip angle | Temperature development | Performance degradation |
+| Pacejka Magic Formula | Warm-up and cooling | Temperature-dependent performance |
 
-**Planned approach:**
-- Study the mathematical structure and physical interpretation of the Pacejka Magic Formula.
-- Understand the influence of the B, C, D and E coefficients.
-- Implement the Magic Formula for longitudinal and lateral pure-slip conditions.
-- Investigate how changes in model parameters influence tyre force characteristics.
-- Generate force-versus-slip curves for different parameter combinations.
-- Investigate parameter estimation and curve fitting using reference or available tyre datasets.
-- Compare the Magic Formula outputs with the simplified tyre models developed in Stage 1.
-- Evaluate model behaviour and document assumptions and limitations.
+> **Project status:** This is an ongoing educational and engineering modelling project. Initial models will use simplified assumptions. Experimental validation will only be claimed when suitable measured data are available.
 
-**Expected outcome:** A parameterised tyre force model capable of reproducing nonlinear force-versus-slip characteristics using selected Magic Formula coefficients.
+---
 
-### 3. Tyre Thermal Modelling
-**Investigate temperature development, heat transfer and warm-up behaviour.**
+## 🧭 Project Development Roadmap
 
-The third stage focuses on the thermal behaviour of a tyre under different operating conditions. The objective is to establish a simplified thermal model and progressively improve its representation of tyre temperature development.
+```mermaid
+flowchart TD
+    A["01 - Tyre Dynamics Fundamentals"] --> B["02 - Pacejka Magic Formula"]
+    B --> C["03 - Tyre Thermal Modelling"]
+    C --> D["04 - Tyre Wear and Degradation"]
+    D --> E["05 - Combined Tyre Simulation"]
+    E --> F["06 - Parameter Estimation and Validation"]
+```
 
-**Planned approach:**
-- Study the fundamental principles of heat generation and heat transfer in tyres.
-- Investigate the effects of friction, slip, load and operating conditions on thermal behaviour.
-- Develop an initial lumped-parameter thermal model using an energy-balance equation.
-- Represent heat input, heat capacity and heat dissipation to the surrounding environment.
-- Implement the thermal model using MATLAB and Python.
-- Simulate temperature development under different operating conditions.
-- Investigate warm-up and cooling characteristics.
-- Study how temperature can influence tyre force characteristics.
-- Identify the additional parameters and experimental data required for more realistic thermal modelling.
+| Stage | Focus | Planned outcome |
+|:---:|---|---|
+| 01 | Tyre Dynamics | Basic longitudinal and lateral force models |
+| 02 | Pacejka Model | Nonlinear tyre force prediction |
+| 03 | Thermal Model | Temperature and warm-up simulation |
+| 04 | Degradation | Simplified tyre wear model |
+| 05 | Integration | Combined tyre simulation framework |
+| 06 | Validation | Parameter estimation and model evaluation |
 
-**Expected outcome:** An initial thermal simulation model capable of investigating tyre temperature development, warm-up and cooling behaviour.
+---
 
-### 4. Tyre Wear and Performance Degradation
-**Investigate how tyre performance changes with operating conditions.**
+# 01. 🛞 Tyre Dynamics Fundamentals
 
-This stage will explore simplified approaches to representing tyre wear and performance degradation.
+**Understanding slip, forces and tyre-road interaction.**
 
-**Planned approach:**
-- Study the factors influencing tyre wear and performance degradation.
-- Investigate the relationship between operating conditions, temperature and tyre performance.
-- Identify suitable simplified degradation indicators and mathematical relationships.
-- Develop an initial degradation model using clearly stated assumptions.
-- Simulate the influence of changing degradation parameters on tyre performance.
-- Investigate possible interactions between thermal behaviour, tyre forces and degradation.
+The first stage investigates how tyres generate forces during acceleration, braking and cornering.
 
-**Expected outcome:** A preliminary degradation model that can be used to investigate how assumed wear or degradation effects influence tyre performance.
+### 1.1 Longitudinal Slip Ratio
 
-### 5. Combined Tyre Simulation
-**Integrate tyre forces, temperature and degradation into a common framework.**
+Longitudinal slip describes the difference between the wheel's circumferential velocity and the vehicle's longitudinal velocity.
 
-The final development stage aims to bring the individual models together into a combined simulation framework.
+\[
+\kappa = \frac{R_e\omega - V_x}{\max(|V_x|,\epsilon)}
+\]
 
-**Planned approach:**
-- Integrate the longitudinal and lateral tyre force models.
-- Incorporate the Pacejka Magic Formula into the force prediction framework.
-- Introduce tyre temperature as an additional operating variable.
-- Investigate temperature-dependent changes in tyre force characteristics.
-- Incorporate the simplified degradation model.
-- Define the required model inputs, outputs and internal parameters.
-- Develop simulation scenarios representing acceleration, braking and cornering.
-- Analyse the combined model response under different operating conditions.
-- Compare simulation outputs with reference data where available.
-- Document model assumptions, limitations and possible improvements.
+| Parameter | Description | Unit |
+|---|---|---|
+| \(R_e\) | Effective rolling radius | m |
+| \(\omega\) | Wheel angular velocity | rad/s |
+| \(V_x\) | Longitudinal vehicle velocity | m/s |
+| \(\kappa\) | Longitudinal slip ratio | - |
 
-**Expected outcome:** A modular tyre simulation framework combining force generation, thermal response and simplified degradation effects.
+*The sign convention and low-speed handling will be defined consistently in the implementation.*
 
-### 6. Simulation, Parameter Estimation and Validation
+### 1.2 Lateral Slip Angle
 
-Model development will be supported by a consistent simulation and evaluation process.
+Slip angle represents the difference between the direction in which the wheel is pointing and its actual direction of travel.
 
-**Planned workflow:**
+A simplified expression is:
 
-1. **Literature and theory review:** Identify the physical principles, equations and modelling approaches relevant to each subsystem.
-2. **Mathematical formulation:** Define the governing equations, assumptions, parameters, inputs and outputs.
-3. **Model implementation:** Develop modular functions in MATLAB and Python.
-4. **Simulation:** Run the models under different operating conditions and parameter combinations.
-5. **Visualisation and analysis:** Generate plots, analyse trends and investigate model sensitivity.
-6. **Parameter estimation:** Estimate suitable model parameters using reference datasets where available.
-7. **Verification and validation:** Check mathematical consistency, numerical behaviour and agreement with available reference or experimental data.
-8. **Documentation:** Record the modelling approach, results, assumptions and limitations for each development stage.
+\[
+\alpha = \tan^{-1}\left(\frac{V_y}{|V_x|}\right)-\delta
+\]
 
-**Validation note:** Simulation results generated using assumed or illustrative parameters will be identified as such. Experimental validation will only be claimed when suitable measured data and a documented comparison are available.
+Where:
 
-### Future Development
+- \(V_y\): Lateral velocity at the wheel
+- \(V_x\): Longitudinal velocity
+- \(\delta\): Steering angle
 
-Potential extensions of the project include:
-- More advanced Pacejka tyre models and combined-slip behaviour.
-- Load-, camber- and temperature-dependent tyre characteristics.
-- Multi-node tyre thermal models.
-- More physically representative heat-generation and heat-transfer mechanisms.
-- Improved tyre wear and degradation modelling.
+### 1.3 Tyre Force Components
+
+| Force | Description | Engineering relevance |
+|---|---|---|
+| \(F_x\) | Longitudinal force | Acceleration and braking |
+| \(F_y\) | Lateral force | Cornering |
+| \(F_z\) | Vertical force | Normal tyre loading |
+
+A simplified friction-circle relationship is:
+
+\[
+\sqrt{F_x^2+F_y^2}\leq \mu F_z
+\]
+
+This relationship provides an initial approximation of the available tyre-road friction.
+
+### Planned Implementation
+
+1. Study tyre-road interaction and friction characteristics.
+2. Develop mathematical relationships for longitudinal and lateral forces.
+3. Implement the equations in MATLAB and Python.
+4. Simulate force characteristics for different slip conditions.
+5. Investigate the influence of normal load and friction.
+6. Analyse the resulting force-versus-slip curves.
+
+### Illustrative Simulation Results
+
+**Longitudinal Force vs Slip Ratio**
+
+![Longitudinal Force](assets/longitudinal-force.png)
+
+**Lateral Force vs Slip Angle**
+
+![Lateral Force](assets/lateral-force.png)
+
+*Illustrative plots generated using simplified mathematical relationships, not experimental tyre measurements.*
+
+---
+
+# 02. 📐 Pacejka Magic Formula Modelling
+
+**Mathematically predicting nonlinear tyre force characteristics.**
+
+The Pacejka Magic Formula is an empirical approach used to represent nonlinear tyre force behaviour as a function of slip.
+
+### 2.1 Magic Formula Equation
+
+A simplified pure-slip formulation is:
+
+\[
+y=D\sin\left(C\tan^{-1}
+\left[Bx-E(Bx-\tan^{-1}(Bx))\right]\right)
+\]
+
+Including horizontal and vertical shifts:
+
+\[
+x=X+S_h
+\]
+
+\[
+Y=y+S_v
+\]
+
+### 2.2 Model Parameters
+
+| Parameter | Meaning | Influence |
+|---|---|---|
+| B | Stiffness factor | Initial slope |
+| C | Shape factor | Curve shape |
+| D | Peak factor | Maximum response |
+| E | Curvature factor | Behaviour near the peak |
+| Sh | Horizontal shift | Horizontal offset |
+| Sv | Vertical shift | Vertical offset |
+
+### Planned Implementation
+
+1. Study the mathematical structure of the Magic Formula.
+2. Implement the equation as reusable MATLAB and Python functions.
+3. Investigate the influence of B, C, D and E.
+4. Generate nonlinear force-versus-slip characteristics.
+5. Perform parameter estimation using suitable reference datasets.
+6. Compare Magic Formula results with the simplified tyre force model.
+7. Document assumptions and model limitations.
+
+### Expected Simulation Outputs
+
+- Longitudinal force versus slip ratio.
+- Lateral force versus slip angle.
+- Comparison of different parameter combinations.
+- Parameter sensitivity plots.
+- Curve fitting and estimation results.
+
+> **Scope:** The initial model will be a simplified pure-slip Magic Formula, not a complete MF-Tyre or MF-Swift implementation. Combined slip, camber, load dependency and transient tyre behaviour are potential future extensions.
+
+---
+
+# 03. 🌡️ Tyre Thermal Modelling
+
+**Investigating temperature development, heat transfer and warm-up behaviour.**
+
+Tyre temperature is an important operating variable that can influence tyre performance.
+
+This stage will begin with a simplified lumped-parameter thermal model.
+
+### 3.1 Thermal Energy Balance
+
+The initial thermal model will be based on:
+
+\[
+C_{th}\frac{dT}{dt}
+=
+\dot Q_{in}-H(T-T_{amb})
+\]
+
+Where:
+
+| Parameter | Description | Unit |
+|---|---|---|
+| \(C_{th}\) | Effective thermal capacity | J/K |
+| \(T\) | Modelled tyre temperature | °C or K |
+| \(T_{amb}\) | Ambient temperature | °C or K |
+| \(\dot Q_{in}\) | Heat input rate | W |
+| \(H\) | Effective heat-transfer coefficient | W/K |
+
+### 3.2 Numerical Implementation
+
+For numerical simulation, forward Euler integration can initially be used:
+
+\[
+T_{k+1}=T_k+
+\frac{\Delta t}{C_{th}}
+\left[\dot Q_{in,k}-H(T_k-T_{amb,k})\right]
+\]
+
+### Planned Implementation
+
+1. Study tyre heat generation and heat transfer.
+2. Define thermal parameters and initial conditions.
+3. Develop the single-node thermal model.
+4. Implement the equations in MATLAB and Python.
+5. Simulate temperature development under different heat-input conditions.
+6. Investigate warm-up and cooling characteristics.
+7. Study the potential relationship between temperature and tyre force.
+
+### Illustrative Thermal Response
+
+![Thermal Warmup](assets/thermal-warmup.png)
+
+*Illustrative first-order thermal response using assumed parameters.*
+
+### Future Thermal Extensions
+
+- Tread and carcass temperature modelling.
+- Multi-node thermal models.
+- Improved friction-related heat generation.
+- Road and ambient heat-transfer effects.
+- Temperature-dependent tyre force characteristics.
+
+> **Model limitation:** A single-node model represents one effective tyre temperature. It does not resolve actual temperature gradients through the tyre structure.
+
+---
+
+# 04. 📉 Tyre Wear and Performance Degradation
+
+**Investigating how tyre performance changes with operating conditions.**
+
+This stage will introduce simplified approaches to representing tyre wear and degradation.
+
+### Planned Implementation
+
+1. Study the main mechanisms influencing tyre wear.
+2. Investigate the influence of slip, load and temperature.
+3. Define a suitable degradation state or indicator.
+4. Develop a simplified mathematical degradation relationship.
+5. Investigate the effect of degradation on tyre force characteristics.
+6. Study possible interactions between thermal behaviour and degradation.
+
+### Initial Mathematical Concept
+
+A model parameter could be represented as:
+
+\[
+p(t)=p_0\,g(w(t),T(t))
+\]
+
+Where:
+
+- \(p_0\): Baseline model parameter
+- \(w(t)\): Selected degradation state
+- \(T(t)\): Modelled tyre temperature
+- \(g\): Relationship to be defined during development
+
+This is a conceptual modelling approach; the degradation relationship will require suitable physical justification and parameterisation.
+
+---
+
+# 05. 🔗 Combined Tyre Simulation
+
+**Integrating force, temperature and degradation models.**
+
+The long-term objective is to connect the individual models into a modular simulation framework.
+
+### Proposed Model Architecture
+
+```mermaid
+flowchart TD
+    A["Vehicle and Road Inputs"] --> B["Slip Calculation"]
+    B --> C["Tyre Force Model"]
+    D["Thermal Model"] <--> C
+    E["Degradation Model"] <--> C
+    C --> F["Longitudinal and Lateral Forces"]
+    D --> G["Temperature"]
+    E --> H["Degradation State"]
+    F --> I["Simulation Results"]
+    G --> I
+    H --> I
+```
+
+### Model Integration Plan
+
+| Subsystem | Inputs | Outputs |
+|---|---|---|
+| Slip calculation | Wheel speed, vehicle speed, steering | Slip ratio and slip angle |
+| Force model | Slip, normal load, model parameters | \(F_x,F_y\) |
+| Thermal model | Heat input, ambient temperature | Tyre temperature |
+| Degradation model | Operating conditions, degradation state | Degradation indicator |
+| Combined model | Individual subsystem outputs | Integrated tyre response |
+
+### Planned Simulation Scenarios
+
+- Straight-line acceleration.
+- Braking under different slip conditions.
+- Steady-state cornering.
+- Different normal-load conditions.
+- Warm-up and cooling cycles.
+- Combined thermal and force-response investigations.
+
+---
+
+# 06. 🧪 Simulation, Parameter Estimation and Validation
+
+Each model will follow a structured engineering workflow.
+
+| Step | Activity | Expected evidence |
+|---|---|---|
+| 01 | Literature review | Technical references |
+| 02 | Mathematical formulation | Equations and assumptions |
+| 03 | Model implementation | MATLAB/Python functions |
+| 04 | Simulation | Reproducible simulation scripts |
+| 05 | Data visualisation | Force and temperature plots |
+| 06 | Parameter estimation | Estimated model coefficients |
+| 07 | Verification | Numerical and mathematical checks |
+| 08 | Validation | Comparison with reference data |
+| 09 | Documentation | Results and limitations |
+
+**Verification:** Checking whether the model has been implemented correctly.
+
+**Validation:** Assessing whether the model represents real tyre behaviour using suitable reference or experimental data.
+
+---
+
+## 🧰 Tools and Technologies
+
+| Technology | Application |
+|---|---|
+| MATLAB | Mathematical modelling and simulation |
+| Simulink | Future subsystem integration |
+| Python | Model development and analysis |
+| NumPy | Numerical calculations |
+| SciPy | Parameter estimation and optimisation |
+| Pandas | Data processing |
+| Matplotlib | Graphs and visualisation |
+| Git / GitHub | Version control and documentation |
+
+<div align="center">
+
+### 🏁 Learning. Modelling. Simulating. Validating.
+
+**An ongoing engineering project exploring tyre behaviour through mathematical modelling and simulation.**
+
+</div>
+modelling.
 - Integration with vehicle dynamics simulations.
 - Investigation of tyre behaviour under motorsport operating conditions.
