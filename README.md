@@ -126,11 +126,11 @@ This relationship provides an initial approximation of the available tyre-road f
 
 **Longitudinal Force vs Slip Ratio**
 
-![Longitudinal Force](assets/longitudinal-force.png)
+![Longitudinal Force](longitudinal-force.png)
 
 **Lateral Force vs Slip Angle**
 
-![Lateral Force](assets/lateral-force.png)
+![Lateral Force](lateral-force.png)
 
 *Illustrative plots generated using simplified mathematical relationships, not experimental tyre measurements.*
 
@@ -244,7 +244,7 @@ T_{k+1}=T_k+
 
 ### Illustrative Thermal Response
 
-![Thermal Warmup](assets/thermal-warmup.png)
+![Thermal Warmup](thermal-warmup.png)
 
 *Illustrative first-order thermal response using assumed parameters.*
 
