@@ -68,23 +68,20 @@ The first stage investigates how tyres generate forces during acceleration, brak
 
 Longitudinal slip describes the difference between the wheel's circumferential velocity and the vehicle's longitudinal velocity.
 
-**Mathematical formulation:**
+The longitudinal slip ratio is calculated as:
 
-<p align="center">
-  <img src="assets/equations/longitudinal-slip.svg" 
-       alt="Kappa equals Re omega minus Vx divided by maximum absolute Vx and epsilon"
-       width="450">
-</p>
-
-**Model parameters:**
+$
+\kappa = \frac{R_e\omega - V_x}{\max(|V_x|,\epsilon)}
+'$
 
 | Parameter | Description | Unit |
-|:---:|---|:---:|
-| `R_e` | Effective rolling radius | m |
-| `ω` | Wheel angular velocity | rad/s |
-| `V_x` | Longitudinal vehicle velocity | m/s |
-| `κ` | Longitudinal slip ratio | - |
-| `ε` | Small numerical regularisation value | m/s |
+|---|---|---|
+| $'R_e'$ | Effective rolling radius | m |
+| $'\omega'$ | Wheel angular velocity | rad/s |
+| $'V_x'$ | Longitudinal vehicle velocity | m/s |
+| $'\kappa'$ | Longitudinal slip ratio | - |
+| $'\epsilon'$ | Small numerical regularisation value | m/s |
+
 
 *The sign convention and low-speed handling will be defined consistently in the implementation.*
 
