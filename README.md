@@ -70,17 +70,19 @@ Longitudinal slip describes the difference between the wheel's circumferential v
 
 The longitudinal slip ratio is calculated as:
 
-$
+```math
 \kappa = \frac{R_e\omega - V_x}{\max(|V_x|,\epsilon)}
-'$
+```
+
+**Model parameters:**
 
 | Parameter | Description | Unit |
-|---|---|---|
-| $'R_e'$ | Effective rolling radius | m |
-| $'\omega'$ | Wheel angular velocity | rad/s |
-| $'V_x'$ | Longitudinal vehicle velocity | m/s |
-| $'\kappa'$ | Longitudinal slip ratio | - |
-| $'\epsilon'$ | Small numerical regularisation value | m/s |
+|:---:|---|:---:|
+| $R_e$ | Effective rolling radius | m |
+| $\omega$ | Wheel angular velocity | rad/s |
+| $V_x$ | Longitudinal vehicle velocity | m/s |
+| $\kappa$ | Longitudinal slip ratio | - |
+| $\epsilon$ | Small numerical regularisation value | m/s |
 
 
 *The sign convention and low-speed handling will be defined consistently in the implementation.*
@@ -91,29 +93,29 @@ Slip angle represents the difference between the direction in which the wheel is
 
 A simplified expression is:
 
-\[
+```math
 \alpha = \tan^{-1}\left(\frac{V_y}{|V_x|}\right)-\delta
-\]
+```
 
 Where:
 
-- \(V_y\): Lateral velocity at the wheel
-- \(V_x\): Longitudinal velocity
-- \(\delta\): Steering angle
+- $\(V_y\)$: Lateral velocity at the wheel
+- $\(V_x\)$: Longitudinal velocity
+- $\(\delta\)$: Steering angle
 
 ### 1.3 Tyre Force Components
 
 | Force | Description | Engineering relevance |
 |---|---|---|
-| \(F_x\) | Longitudinal force | Acceleration and braking |
-| \(F_y\) | Lateral force | Cornering |
-| \(F_z\) | Vertical force | Normal tyre loading |
+| $\(F_x\)$ | Longitudinal force | Acceleration and braking |
+| $\(F_y\)$ | Lateral force | Cornering |
+| $\(F_z\)$ | Vertical force | Normal tyre loading |
 
 A simplified friction-circle relationship is:
 
-\[
+```math
 \sqrt{F_x^2+F_y^2}\leq \mu F_z
-\]
+```
 
 This relationship provides an initial approximation of the available tyre-road friction.
 
@@ -150,20 +152,20 @@ The Pacejka Magic Formula is an empirical approach used to represent nonlinear t
 
 A simplified pure-slip formulation is:
 
-\[
+```math
 y=D\sin\left(C\tan^{-1}
 \left[Bx-E(Bx-\tan^{-1}(Bx))\right]\right)
-\]
+```
 
 Including horizontal and vertical shifts:
 
-\[
+```math
 x=X+S_h
-\]
+```
 
-\[
+```math
 Y=y+S_v
-\]
+```
 
 ### 2.2 Model Parameters
 
@@ -198,7 +200,7 @@ Y=y+S_v
 
 ---
 
-# 03. 🌡️ Tyre Thermal Modelling
+# 03. Tyre Thermal Modelling
 
 **Investigating temperature development, heat transfer and warm-up behaviour.**
 
@@ -210,31 +212,31 @@ This stage will begin with a simplified lumped-parameter thermal model.
 
 The initial thermal model will be based on:
 
-\[
+```math
 C_{th}\frac{dT}{dt}
 =
 \dot Q_{in}-H(T-T_{amb})
-\]
+```
 
 Where:
 
 | Parameter | Description | Unit |
 |---|---|---|
-| \(C_{th}\) | Effective thermal capacity | J/K |
-| \(T\) | Modelled tyre temperature | °C or K |
-| \(T_{amb}\) | Ambient temperature | °C or K |
-| \(\dot Q_{in}\) | Heat input rate | W |
-| \(H\) | Effective heat-transfer coefficient | W/K |
+| $\(C_{th}\)$ | Effective thermal capacity | J/K |
+| $\(T\)$ | Modelled tyre temperature | °C or K |
+| $\(T_{amb}\)$ | Ambient temperature | °C or K |
+| $\(\dot Q_{in}\)$ | Heat input rate | W |
+| $\(H\)$ | Effective heat-transfer coefficient | W/K |
 
 ### 3.2 Numerical Implementation
 
 For numerical simulation, forward Euler integration can initially be used:
 
-\[
+```math
 T_{k+1}=T_k+
 \frac{\Delta t}{C_{th}}
 \left[\dot Q_{in,k}-H(T_k-T_{amb,k})\right]
-\]
+```
 
 ### Planned Implementation
 
@@ -264,7 +266,7 @@ T_{k+1}=T_k+
 
 ---
 
-# 04. 📉 Tyre Wear and Performance Degradation
+# 04. Tyre Wear and Performance Degradation
 
 **Investigating how tyre performance changes with operating conditions.**
 
@@ -283,22 +285,22 @@ This stage will introduce simplified approaches to representing tyre wear and de
 
 A model parameter could be represented as:
 
-\[
+```math
 p(t)=p_0\,g(w(t),T(t))
-\]
+```
 
 Where:
 
-- \(p_0\): Baseline model parameter
-- \(w(t)\): Selected degradation state
-- \(T(t)\): Modelled tyre temperature
-- \(g\): Relationship to be defined during development
+- $\(p_0\)$: Baseline model parameter
+- $\(w(t)\)$: Selected degradation state
+- $\(T(t)\)$: Modelled tyre temperature
+- $\(g\)$: Relationship to be defined during development
 
 This is a conceptual modelling approach; the degradation relationship will require suitable physical justification and parameterisation.
 
 ---
 
-# 05. 🔗 Combined Tyre Simulation
+# 05. Combined Tyre Simulation
 
 **Integrating force, temperature and degradation models.**
 
@@ -325,7 +327,7 @@ flowchart TD
 | Subsystem | Inputs | Outputs |
 |---|---|---|
 | Slip calculation | Wheel speed, vehicle speed, steering | Slip ratio and slip angle |
-| Force model | Slip, normal load, model parameters | \(F_x,F_y\) |
+| Force model | Slip, normal load, model parameters | $\(F_x,F_y\)$ |
 | Thermal model | Heat input, ambient temperature | Tyre temperature |
 | Degradation model | Operating conditions, degradation state | Degradation indicator |
 | Combined model | Individual subsystem outputs | Integrated tyre response |
@@ -341,7 +343,7 @@ flowchart TD
 
 ---
 
-# 06. 🧪 Simulation, Parameter Estimation and Validation
+# 06. Simulation, Parameter Estimation and Validation
 
 Each model will follow a structured engineering workflow.
 
@@ -363,7 +365,7 @@ Each model will follow a structured engineering workflow.
 
 ---
 
-## 🧰 Tools and Technologies
+## Tools and Technologies
 
 | Technology | Application |
 |---|---|
