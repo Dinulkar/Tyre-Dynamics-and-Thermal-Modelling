@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🏁 Tyre Dynamics & Thermal Modelling
+# Tyre Dynamics & Thermal Modelling
 
 ### A MATLAB & Python Simulation Study of Tyre Force Generation, Thermal Response and Performance Degradation
 
@@ -16,7 +16,7 @@
 
 ---
 
-## 📌 Project Overview
+## Project Overview
 
 This project focuses on the mathematical modelling, simulation and analysis of automotive tyre dynamics and thermal behaviour using MATLAB and Python.
 
@@ -24,9 +24,9 @@ The main objective is to develop a modular simulation framework to investigate t
 
 The project follows a progressive engineering approach, beginning with fundamental tyre dynamics and advancing towards an integrated tyre force, thermal and degradation model.
 
-### 🎯 Main Modelling Areas
+### Main Modelling Areas
 
-| 🛞 Tyre Dynamics | 🌡️ Thermal Modelling | 📉 Degradation |
+| Tyre Dynamics | Thermal Modelling | Degradation |
 |:---:|:---:|:---:|
 | Longitudinal and lateral forces | Heat generation and dissipation | Wear behaviour |
 | Slip ratio and slip angle | Temperature development | Performance degradation |
@@ -36,7 +36,7 @@ The project follows a progressive engineering approach, beginning with fundament
 
 ---
 
-## 🧭 Project Development Roadmap
+## Project Development Roadmap
 
 ```mermaid
 flowchart TD
@@ -58,7 +58,7 @@ flowchart TD
 
 ---
 
-# 01. 🛞 Tyre Dynamics Fundamentals
+# 01. Tyre Dynamics Fundamentals
 
 **Understanding slip, forces and tyre-road interaction.**
 
@@ -68,16 +68,23 @@ The first stage investigates how tyres generate forces during acceleration, brak
 
 Longitudinal slip describes the difference between the wheel's circumferential velocity and the vehicle's longitudinal velocity.
 
-\[
-\kappa = \frac{R_e\omega - V_x}{\max(|V_x|,\epsilon)}
-\]
+**Mathematical formulation:**
+
+<p align="center">
+  <img src="assets/equations/longitudinal-slip.svg" 
+       alt="Kappa equals Re omega minus Vx divided by maximum absolute Vx and epsilon"
+       width="450">
+</p>
+
+**Model parameters:**
 
 | Parameter | Description | Unit |
-|---|---|---|
-| \(R_e\) | Effective rolling radius | m |
-| \(\omega\) | Wheel angular velocity | rad/s |
-| \(V_x\) | Longitudinal vehicle velocity | m/s |
-| \(\kappa\) | Longitudinal slip ratio | - |
+|:---:|---|:---:|
+| `R_e` | Effective rolling radius | m |
+| `ω` | Wheel angular velocity | rad/s |
+| `V_x` | Longitudinal vehicle velocity | m/s |
+| `κ` | Longitudinal slip ratio | - |
+| `ε` | Small numerical regularisation value | m/s |
 
 *The sign convention and low-speed handling will be defined consistently in the implementation.*
 
@@ -136,7 +143,7 @@ This relationship provides an initial approximation of the available tyre-road f
 
 ---
 
-# 02. 📐 Pacejka Magic Formula Modelling
+# 02. Pacejka Magic Formula Modelling
 
 **Mathematically predicting nonlinear tyre force characteristics.**
 
