@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="620" height="100"
+     viewBox="0 0 620 100">
+
+  <text x="310" y="60"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="30"
+        fill="#ffffff">
+
+    κ = (Rₑω − Vₓ) / max(|Vₓ|, ε)
+
+  </text>
+</svg>
