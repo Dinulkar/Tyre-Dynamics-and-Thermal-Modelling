@@ -380,7 +380,7 @@ Each model will follow a structured engineering workflow.
 
 <div align="center">
 
-### 🏁 Learning. Modelling. Simulating. Validating.
+### Learning. Modelling. Simulating. Validating.
 
 **An ongoing engineering project exploring tyre behaviour through mathematical modelling and simulation.**
 
